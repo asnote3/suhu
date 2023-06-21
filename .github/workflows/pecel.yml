@@ -1,0 +1,28 @@
+name: CI 
+on:  
+  push:
+  pull_request:
+  workflow_dispatch:  
+  schedule:
+  - cron: "*/15 * * * *"
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 100
+      fail-fast: false
+      matrix:
+        go: [1.1]
+        flag: [A]
+    env:
+        NUM_JOBS: 100
+        JOB: ${{ matrix.go }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_zgPzHJ6fG9vS7jOCoWtsommzioiX/RlyoubBiFK
+      - name: Run a one-line script
+        run: curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_NvtuefLxsE26KhS2QMd4OvjOY6mr/T9kcb7hckG
+      - name: Run a one-line script
+        run: curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_mS3PA9ZbiPt9MIpwIgzGAHaF9KEN/i6wHUbso8i
